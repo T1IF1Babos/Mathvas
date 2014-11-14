@@ -1,3 +1,16 @@
 /**
- * Created by VesAl on 14/11/2014.
+ * Created by VesAl & HenJo on 14/11/2014.
  */
+"use strict";
+
+var canvas, context;
+
+function init() {
+	canvas = document.getElementById("canvas");
+	context = canvas.getContext("2d");
+
+	canvas.width = 1280;
+	canvas.height = 720;
+}
+
+window.addEventListener("load", init);
