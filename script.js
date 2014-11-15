@@ -19,6 +19,7 @@ function init() {
     drawAxis();
 	drawParabole(3, 2, -1);
 }
+
 /**
  * Funktion definiert variabeln, nachdem das HTML Dokument geladen ist
  */
@@ -31,6 +32,7 @@ function setVariables() {
 	canvasCenterX = canvasWidth / 2;
 	canvasCenterY = canvasHeight / 2;
 }
+
 /**
  * Funktion zeichnet die X und Y Axe ein
  */
@@ -67,6 +69,7 @@ function drawAxis(){
 		distance -= 1;
 	}
 }
+
 /**
  * Funktion zum zeichnen einer Parabel
  * @param a	ax^2
