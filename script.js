@@ -24,11 +24,11 @@ function drawParabole() {
 	var x;
 	var y;
 	for (var i = 0; i < canvas.width; i++) {
-		x = ((i + canvasCenterX) * pixelDistance);
+		x = (i - canvasCenterX) / pixelDistance;
 		y = (3 * (x * x)) + (2 * x) - 1;
 		y = (y * pixelDistance) + canvasCenterY;
 		if (y < 0 || y > canvas.width) continue;
-		context.fillRect(x, y, 1, 1);
+		context.fillRect(i, y, 1, 1);
 		console.log("X=" + x + "   Y=" + y);
 	}
 }
