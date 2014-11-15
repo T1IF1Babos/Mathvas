@@ -25,8 +25,8 @@ function setVariables() {
 
     canvasHeight = canvas.height;
     canvasWidth = canvas.width;
-    canvasCenterX = canvas_width / 2;
-	canvasCenterY = canvas_height / 2;
+    canvasCenterX = canvasWidth / 2;
+	canvasCenterY = canvasHeight / 2;
 }
 
 function drawAxis(){
@@ -34,18 +34,10 @@ function drawAxis(){
     context.fillRect(canvasWidth / 2, 0, 1, canvasHeight);
     context.fillRect(0, canvasHeight / 2, canvasWidth, 1);
 
-    for (var i = canvasCenterX; i > 0; i -= pixelDistance) {
-        context.fillRect(i, canvasCenterY - 3, 1,7);
-    }
-    for (i = canvasCenterX; i < canvasWidth; i += pixelDistance) {
-        context.fillRect(i, canvasCenterY - 3, 1, 7);
-    }
-    for (i = canvasCenterY; i > 0; i -= pixelDistance) {
-        context.fillRect(canvasCenterX - 3, i, 7, 1);
-    }
-    for (i = canvasCenterY; i < canvasHeight; i += pixelDistance) {
-        context.fillRect(canvasCenterX - 3, i, 7, 1);
-    }
+    for (var i = canvasCenterX; i > 0; i -= pixelDistance) {context.fillRect(i, canvasCenterY - 3, 1,7);}
+    for (i = canvasCenterX; i < canvasWidth; i += pixelDistance) {context.fillRect(i, canvasCenterY - 3, 1, 7);}
+    for (i = canvasCenterY; i > 0; i -= pixelDistance) {context.fillRect(canvasCenterX - 3, i, 7, 1);}
+    for (i = canvasCenterY; i < canvasHeight; i += pixelDistance) {context.fillRect(canvasCenterX - 3, i, 7, 1);}
 }
 
 window.addEventListener("load", init);
