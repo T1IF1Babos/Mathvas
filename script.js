@@ -6,7 +6,7 @@
 var canvas,
     context,
     canvasHeight, canvasWidth, canvasCenterX, canvasCenterY,
-    pixelDistance = 40;
+	pixelDistance = 50;
 
 /**
  * Funktion wird ausgeführt, wenn das gesammte HTML Dokument geladen ist
@@ -16,6 +16,21 @@ function init() {
     context = canvas.getContext("2d");
     setVariables();
     drawAxis();
+	drawParabole();
+}
+
+function drawParabole() {
+	context.fillStyle = "#000000";
+	var x;
+	var y;
+	for (var i = 0; i < canvas.width; i++) {
+		x = ((i + canvasCenterX) * pixelDistance);
+		y = (3 * (x * x)) + (2 * x) - 1;
+		y = (y * pixelDistance) + canvasCenterY;
+		if (y < 0 || y > canvas.width) continue;
+		context.fillRect(x, y, 1, 1);
+		console.log("X=" + x + "   Y=" + y);
+	}
 }
 
 function setVariables() {
@@ -28,22 +43,39 @@ function setVariables() {
 	canvasCenterY = canvasHeight / 2;
 }
 
+/**
+ * X und Y Axe zeichnen!
+ */
 function drawAxis(){
     context.fillStyle = "#000000";
     context.fillRect(canvasWidth / 2, 0, 1, canvasHeight);
     context.fillRect(0, canvasHeight / 2, canvasWidth, 1);
-
-    for (var i = canvasCenterX; i > 0; i -= pixelDistance) {
-		context.fillRect(i, canvasCenterY - 3, 1,7);
-	}
-    for (i = canvasCenterX; i < canvasWidth; i += pixelDistance) {
+	context.font = "10px Arial";
+	context.textBaseline = "middle";
+	context.textAlign = "center";
+	var distance = 0;
+	for (var i = canvasCenterX; i > 0; i -= pixelDistance) {
 		context.fillRect(i, canvasCenterY - 3, 1, 7);
+		if (distance != 0) context.fillText(distance + "", i, canvasCenterY + 10);
+		distance -= 1;
 	}
-    for (i = canvasCenterY; i > 0; i -= pixelDistance) {
-		context.fillRect(canvasCenterX - 3, i, 7, 1);
+	distance = 0;
+	for (i = canvasCenterX; i < canvasWidth; i += pixelDistance) {
+		context.fillRect(i, canvasCenterY - 3, 1, 7);
+		if (distance != 0) context.fillText(distance + "", i, canvasCenterY + 10);
+		distance += 1;
 	}
-    for (i = canvasCenterY; i < canvasHeight; i += pixelDistance) {
+	distance = 0;
+	for (i = canvasCenterY; i > 0; i -= pixelDistance) {
 		context.fillRect(canvasCenterX - 3, i, 7, 1);
+		if (distance != 0) context.fillText(distance + "", canvasCenterX - 10, i);
+		distance -= 1;
+	}
+	distance = 0;
+	for (i = canvasCenterY; i < canvasHeight; i += pixelDistance) {
+		context.fillRect(canvasCenterX - 3, i, 7, 1);
+		if (distance != 0) context.fillText(distance + "", canvasCenterX - 10, i);
+		distance += 1;
 	}
 }
 
