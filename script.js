@@ -23,6 +23,7 @@ function drawParabole() {
 	context.fillStyle = "#000000";
 	var x;
 	var y;
+
 	for (var i = 0; i < canvas.width; i++) {
 		x = (i - canvasCenterX) / pixelDistance;
 		y = (3 * (x * x)) + (2 * x) - 1;
