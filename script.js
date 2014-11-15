@@ -66,9 +66,11 @@ function drawAxis(){
 function drawParabole(a, b, c) {
 	context.fillStyle = "#000000";
 	context.beginPath();
+
 	if (a == null || a == undefined)a = 1;
 	if (b == null || b == undefined)b = 1;
 	if (c == null || c == undefined)c = 1;
+
 	var x;
 	var y;
 	var hasAllreadyMoved = false;
