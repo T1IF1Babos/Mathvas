@@ -19,7 +19,6 @@ function init() {
 }
 
 function setVariables() {
-
     canvas.width = 1280;
     canvas.height = 720;
 
