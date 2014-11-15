@@ -1,7 +1,6 @@
 /**
  * Created by VesAl on 14/11/2014.
  */
-
 "use strict";
 
 var canvas,
