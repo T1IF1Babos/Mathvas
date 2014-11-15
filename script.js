@@ -26,7 +26,7 @@ function init() {
     drawAxis();
 }
 
-function setVariables(){
+/*function setVariables(){
     canvas = document.getElementById("canvas");
     context = canvas.getContext("2d");
 
@@ -37,7 +37,7 @@ function setVariables(){
     canvas_width = canvas.width;
     canvas_centerX = canvas_width / 2;
     canvas_centerY = canvas_height / 2;
-}
+ }*/
 
 function drawAxis(){
     context.fillStyle = "#000000";
