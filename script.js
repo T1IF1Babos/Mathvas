@@ -6,7 +6,7 @@
 var canvas,
     context,
     canvas_height, canvas_width, canvas_centerX, canvas_centerY,
-    pixelPerCM=80;
+    pixelPerCM = 40;
 
 /**
  * Funktion wird ausgeführt, wenn das gesammte HTML Dokument geladen ist
@@ -14,21 +14,11 @@ var canvas,
 function init() {
     canvas = document.getElementById("canvas");
     context = canvas.getContext("2d");
-
-    canvas.width = 1280;
-    canvas.height = 720;
-
-    canvas_height = canvas.height;
-    canvas_width = canvas.width;
-    canvas_centerX = canvas_width / 2;
-    canvas_centerY = canvas_height / 2;
-    //setVariables();
+    setVariables();
     drawAxis();
 }
 
-/*function setVariables(){
-    canvas = document.getElementById("canvas");
-    context = canvas.getContext("2d");
+function setVariables() {
 
     canvas.width = 1280;
     canvas.height = 720;
@@ -37,7 +27,7 @@ function init() {
     canvas_width = canvas.width;
     canvas_centerX = canvas_width / 2;
     canvas_centerY = canvas_height / 2;
- }*/
+}
 
 function drawAxis(){
     context.fillStyle = "#000000";
@@ -45,22 +35,19 @@ function drawAxis(){
     console.log("WIDTH=" + canvas.width + " HEIGHT=" + canvas.height);
     context.fillRect(canvas_width / 2, 0, 1, canvas_height);
     context.fillRect(0, canvas_height / 2, canvas_width, 1);
-    /*for(var i = 0; i < canvas_width/pixelPerCM; i++){
-        context.fillRect(i*pixelPerCM, (canvas_height/2)-5, 1, 11);
-    }
-    for(var i = 0; i < canvas_height/pixelPerCM; i++){
-        context.fillRect((canvas_width/2)-5, i*pixelPerCM, 11, 1);
-    }*/
 
-    for (var i = canvas.width / 2; i < canvas.width; i += pixelPerCM){
+    for (var i = canvas_centerX; i > 0; i -= pixelPerCM) {
         context.fillRect(i, canvas_centerY - 3, 1,7);
-        console.log(i);
     }
-    /*var i = canvas_centerX;
-    while(i > 0){
-        context.fillRect(i, canvas_centerY-3, 1,7);
-        i-pixelPerCM;
-    }*/
+    for (var i = canvas_centerX; i < canvas.width; i += pixelPerCM) {
+        context.fillRect(i, canvas_centerY - 3, 1, 7);
+    }
+    for (var i = canvas_centerY; i > 0; i -= pixelPerCM) {
+        context.fillRect(canvas_centerX - 3, i, 7, 1);
+    }
+    for (var i = canvas_centerY; i < canvas.height; i += pixelPerCM) {
+        context.fillRect(canvas_centerX - 3, i, 7, 1);
+    }
 }
 
 window.addEventListener("load", init);
