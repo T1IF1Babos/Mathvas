@@ -43,8 +43,8 @@ function drawAxis(){
     context.fillStyle = "#000000";
     console.log("x="+ canvas_width/2 + " y="+ 0 + "  X=" + canvas_width/2+" Y="+ canvas_height);
     console.log("WIDTH=" + canvas.width + " HEIGHT=" + canvas.height);
-    context.fillRect((canvas_width/2), 0, 1, canvas_height);
-    context.fillRect(0, (canvas_height/2), canvas_width, 1);
+    context.fillRect(canvas_width / 2, 0, 1, canvas_height);
+    context.fillRect(0, canvas_height / 2, canvas_width, 1);
     /*for(var i = 0; i < canvas_width/pixelPerCM; i++){
         context.fillRect(i*pixelPerCM, (canvas_height/2)-5, 1, 11);
     }
@@ -52,8 +52,8 @@ function drawAxis(){
         context.fillRect((canvas_width/2)-5, i*pixelPerCM, 11, 1);
     }*/
 
-    for(var i = canvas_centerX; 0 < i; i-pixelPerCM){
-        context.fillRect(i, (canvas_centerY-3), 1,7);
+    for (var i = canvas.width / 2; i < canvas.width; i += pixelPerCM){
+        context.fillRect(i, canvas_centerY - 3, 1,7);
         console.log(i);
     }
     /*var i = canvas_centerX;
