@@ -17,7 +17,7 @@ function init() {
 
     setVariables();
     drawAxis();
-	drawParabole(1, 2, -3);
+	drawParabole(3, 2, -1);
 }
 function setVariables() {
 	canvas.width = 1280;
@@ -54,19 +54,21 @@ function drawAxis(){
 	for (i = canvasCenterY; i > 0; i -= pixelDistance) {
 		context.fillRect(canvasCenterX - 3, i, 7, 1);
 		if (distance != 0) context.fillText(distance + "", canvasCenterX - 10, i);
-		distance -= 1;
+		distance += 1;
 	}
 	distance = 0;
 	for (i = canvasCenterY; i < canvasHeight; i += pixelDistance) {
 		context.fillRect(canvasCenterX - 3, i, 7, 1);
 		if (distance != 0) context.fillText(distance + "", canvasCenterX - 10, i);
-		distance += 1;
+		distance -= 1;
 	}
 }
 function drawParabole(a, b, c) {
 	context.fillStyle = "#000000";
 	context.beginPath();
-
+	if (a == null || a == undefined)a = 1;
+	if (b == null || b == undefined)b = 1;
+	if (c == null || c == undefined)c = 1;
 	var x;
 	var y;
 	var hasAllreadyMoved = false;
@@ -74,10 +76,10 @@ function drawParabole(a, b, c) {
 	for (var i = 0; i < canvas.width; i++) {
 		x = (i - canvasCenterX) / pixelDistance;
 
-		y = a * x * x + b * x - c;
-		y = (y * pixelDistance) + canvasCenterY;
+		y = a * x * x + b * x + c;
+		y = y * -1 * pixelDistance + canvasCenterY;
 
-		if (y < 0 || y > canvas.width) continue;
+		if (y + pixelDistance < 0 || y - pixelDistance > canvas.width) continue;
 		if (hasAllreadyMoved) context.lineTo(i, y);
 		else {
 			context.moveTo(i, y);
