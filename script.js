@@ -38,6 +38,7 @@ function drawAxis(){
 	context.font = "10px Arial";
 	context.textBaseline = "middle";
 	context.textAlign = "center";
+
 	var distance = 0;
 	for (var i = canvasCenterX; i > 0; i -= pixelDistance) {
 		context.fillRect(i, canvasCenterY - 3, 1, 7);
