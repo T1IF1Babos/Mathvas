@@ -6,7 +6,8 @@
 var canvas,
     context,
     canvasHeight, canvasWidth, canvasCenterX, canvasCenterY,
-	pixelDistance = 50;
+	pixelDistance = 50,
+	savePolinom = [];
 
 /**
  * Funktion wird ausgeführt, wenn das gesammte HTML Dokument geladen ist
@@ -88,6 +89,10 @@ function drawParabole(a, b, c) {
 	var y;
 	var hasAllreadyMoved = false;
 
+	console.log("\"" + a + "\"");
+	console.log("\"" + b + "\"");
+	console.log("\"" + c + "\"");
+
 	for (var i = 0; i < canvas.width; i++) {
 		x = (i - canvasCenterX) / pixelDistance;
 
@@ -102,6 +107,22 @@ function drawParabole(a, b, c) {
 		}
 	}
 	context.stroke();
+}
+
+function save(polinom) {
+	savePolinom.push = polinom;
+}
+
+function calc() {
+	var a = document.getElementById("a").value;
+	var b = document.getElementById("b").value;
+	var c = document.getElementById("c").value;
+
+	console.log("\"" + a + "\"");
+	console.log("\"" + b + "\"");
+	console.log("\"" + c + "\"");
+
+	drawParabole(a, b, c);
 }
 
 window.addEventListener("load", init);
