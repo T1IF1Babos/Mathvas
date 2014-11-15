@@ -54,7 +54,7 @@ function drawAxis(){
     }*/
 
     for(var i = canvas_centerX; 0 < i; i-pixelPerCM){
-        context.fillRect(i, canvas_centerY-3, 1,7);
+        context.fillRect(i, (canvas_centerY-3), 1,7);
         console.log(i);
     }
     /*var i = canvas_centerX;
