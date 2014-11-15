@@ -30,10 +30,11 @@ function drawParabole() {
 		y = 3 * x * x + 2 * x - 1;
 		y = (y * pixelDistance) + canvasCenterY;
 		if (y < 0 || y > canvas.width) continue;
-		if (!hasAllreadyMoved) {
+		if (hasAllreadyMoved) context.lineTo(i, y);
+		else {
 			context.moveTo(i, y);
 			hasAllreadyMoved = true;
-		} else context.lineTo(i, y);
+		}
 	}
 	context.stroke();
 }
