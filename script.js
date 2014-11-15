@@ -21,17 +21,21 @@ function init() {
 
 function drawParabole() {
 	context.fillStyle = "#000000";
+	context.beginPath();
 	var x;
 	var y;
-
+	var hasAllreadyMoved = false;
 	for (var i = 0; i < canvas.width; i++) {
 		x = (i - canvasCenterX) / pixelDistance;
-		y = (3 * (x * x)) + (2 * x) - 1;
+		y = 3 * x * x + 2 * x - 1;
 		y = (y * pixelDistance) + canvasCenterY;
 		if (y < 0 || y > canvas.width) continue;
-		context.fillRect(i, y, 1, 1);
-		console.log("X=" + x + "   Y=" + y);
+		if (!hasAllreadyMoved) {
+			context.moveTo(i, y);
+			hasAllreadyMoved = true;
+		} else context.lineTo(i, y);
 	}
+	context.stroke();
 }
 
 function setVariables() {
