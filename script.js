@@ -6,7 +6,7 @@
 var canvas,
     context,
     canvasHeight, canvasWidth, canvasCenterX, canvasCenterY,
-	pixelDistance = 50;
+    pixelDistance = 40;
 
 /**
  * Funktion wird ausgeführt, wenn das gesammte HTML Dokument geladen ist
@@ -16,21 +16,6 @@ function init() {
     context = canvas.getContext("2d");
     setVariables();
     drawAxis();
-	drawParabole();
-}
-
-function drawParabole() {
-	context.fillStyle = "#000000";
-	var x;
-	var y;
-	for (var i = 0; i < canvas.width; i++) {
-		x = ((i + canvasCenterX) * pixelDistance);
-		y = (3 * (x * x)) + (2 * x) - 1;
-		y = (y * pixelDistance) + canvasCenterY;
-		if (y < 0 || y > canvas.width) continue;
-		context.fillRect(x, y, 1, 1);
-		console.log("X=" + x + "   Y=" + y);
-	}
 }
 
 function setVariables() {
