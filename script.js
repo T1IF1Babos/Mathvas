@@ -14,48 +14,27 @@ var canvas,
 function init() {
     canvas = document.getElementById("canvas");
     context = canvas.getContext("2d");
+
     setVariables();
     drawAxis();
-	drawParabole();
+	drawParabole(1, 2, -3);
 }
-
-function drawParabole() {
-	context.fillStyle = "#000000";
-	context.beginPath();
-	var x;
-	var y;
-	var hasAllreadyMoved = false;
-	for (var i = 0; i < canvas.width; i++) {
-		x = (i - canvasCenterX) / pixelDistance;
-		y = 3 * x * x + 2 * x - 1;
-		y = (y * pixelDistance) + canvasCenterY;
-		if (y < 0 || y > canvas.width) continue;
-		if (hasAllreadyMoved) context.lineTo(i, y);
-		else {
-			context.moveTo(i, y);
-			hasAllreadyMoved = true;
-		}
-	}
-	context.stroke();
-}
-
 function setVariables() {
-    canvas.width = 1280;
-    canvas.height = 720;
+	canvas.width = 1280;
+	canvas.height = 720;
 
-    canvasHeight = canvas.height;
-    canvasWidth = canvas.width;
-    canvasCenterX = canvasWidth / 2;
+	canvasHeight = canvas.height;
+	canvasWidth = canvas.width;
+	canvasCenterX = canvasWidth / 2;
 	canvasCenterY = canvasHeight / 2;
 }
-
 /**
  * X und Y Axe zeichnen!
  */
 function drawAxis(){
-    context.fillStyle = "#000000";
-    context.fillRect(canvasWidth / 2, 0, 1, canvasHeight);
-    context.fillRect(0, canvasHeight / 2, canvasWidth, 1);
+	context.fillStyle = "#000000";
+	context.fillRect(canvasWidth / 2, 0, 1, canvasHeight);
+	context.fillRect(0, canvasHeight / 2, canvasWidth, 1);
 	context.font = "10px Arial";
 	context.textBaseline = "middle";
 	context.textAlign = "center";
@@ -83,6 +62,29 @@ function drawAxis(){
 		if (distance != 0) context.fillText(distance + "", canvasCenterX - 10, i);
 		distance += 1;
 	}
+}
+function drawParabole(a, b, c) {
+	context.fillStyle = "#000000";
+	context.beginPath();
+
+	var x;
+	var y;
+	var hasAllreadyMoved = false;
+
+	for (var i = 0; i < canvas.width; i++) {
+		x = (i - canvasCenterX) / pixelDistance;
+
+		y = a * x * x + b * x - c;
+		y = (y * pixelDistance) + canvasCenterY;
+
+		if (y < 0 || y > canvas.width) continue;
+		if (hasAllreadyMoved) context.lineTo(i, y);
+		else {
+			context.moveTo(i, y);
+			hasAllreadyMoved = true;
+		}
+	}
+	context.stroke();
 }
 
 window.addEventListener("load", init);
