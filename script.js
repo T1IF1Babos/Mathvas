@@ -92,12 +92,10 @@ function drawParabole(a, b, c) {
 		x = (i - canvasCenterX) / pixelDistance;
 
 		y = a * x * x + b * x + c;
-		y = round(y);
-		console.log("i=" + i + "  y=" + y);
 		y = (y * -1 * pixelDistance) + canvasCenterY;
 
 		if (y + pixelDistance < 0 || y - pixelDistance > canvas.width) continue;
-		console.log("X=" + i + "   Y=" + y);
+
 		if (hasAllreadyMoved) context.lineTo(i, y);
 		else {
 			context.moveTo(i, y);
@@ -113,15 +111,15 @@ function save(polinom) {
 }
 
 function calc() {
-	var a = document.getElementById("a").value;
-	var b = document.getElementById("b").value;
-	var c = document.getElementById("c").value;
+	var a = Number(document.getElementById("a").value);
+	var b = Number(document.getElementById("b").value);
+	var c = Number(document.getElementById("c").value);
 
-	drawParabole(2, 3, 3);
+	drawParabole(a, b, c);
 }
 
-function round(x) {
+/*function round(x) {
 	return Math.round(x * 100) / 100;
-}
+ }*/
 
 window.addEventListener("load", init);
