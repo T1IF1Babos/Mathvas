@@ -18,9 +18,6 @@ function init() {
 
     setVariables();
     drawAxis();
-	drawParabole(1.5, 3, -2);
-	drawParabole(1, -6, 8);
-	drawParabole(-2, 2, 2.5);
 }
 
 /**
@@ -91,17 +88,14 @@ function drawParabole(a, b, c) {
 	var y;
 	var hasAllreadyMoved = false;
 
-	console.log("\"" + a + "\"");
-	console.log("\"" + b + "\"");
-	console.log("\"" + c + "\"");
-
 	for (var i = 0; i < canvas.width; i++) {
 		x = (i - canvasCenterX) / pixelDistance;
 
-		y = (a) * x * x + (b) * x + (c);
-		y = y * -1 * pixelDistance + canvasCenterY;
+		y = a * x * x + b * x + c;
+		y = (y * -1 * pixelDistance + canvasCenterY);
 
 		if (y + pixelDistance < 0 || y - pixelDistance > canvas.width) continue;
+		console.log("X=" + i + "   Y=" + y);
 		if (hasAllreadyMoved) context.lineTo(i, y);
 		else {
 			context.moveTo(i, y);
@@ -109,6 +103,7 @@ function drawParabole(a, b, c) {
 		}
 	}
 	context.stroke();
+	return;
 }
 
 function save(polinom) {
@@ -119,10 +114,6 @@ function calc() {
 	var a = document.getElementById("a").value;
 	var b = document.getElementById("b").value;
 	var c = document.getElementById("c").value;
-
-	console.log("\"" + a + "\"");
-	console.log("\"" + b + "\"");
-	console.log("\"" + c + "\"");
 
 	drawParabole(a, b, c);
 }
