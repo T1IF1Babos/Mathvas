@@ -89,12 +89,12 @@ function drawParabole(a, b, c) {
 	var hasAllreadyMoved = false;
 
 	for (var i = 0; i < canvas.width; i++) {
-		x = (i - canvasCenterX)/* / pixelDistance*/;
+		x = (i - canvasCenterX) / pixelDistance;
 
 		y = a * x * x + b * x + c;
 		y = round(y);
 		console.log("i=" + i + "  y=" + y);
-		y = (y * -1/* * pixelDistance */ + canvasCenterY);
+		y = (y * -1 * pixelDistance) + canvasCenterY;
 
 		if (y + pixelDistance < 0 || y - pixelDistance > canvas.width) continue;
 		console.log("X=" + i + "   Y=" + y);
