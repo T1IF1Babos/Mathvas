@@ -80,9 +80,9 @@ function drawParabole(a, b, c) {
 	context.fillStyle = "#000000";
 	context.beginPath();
 
-	if (a == null || a == undefined)a = 1;
-	if (b == null || b == undefined)b = 1;
-	if (c == null || c == undefined)c = 1;
+	if (a == null || a == undefined)a = 0;
+	if (b == null || b == undefined)b = 0;
+	if (c == null || c == undefined)c = 0;
 
 	var x;
 	var y;
