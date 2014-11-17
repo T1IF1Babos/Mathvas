@@ -117,7 +117,7 @@ function calc() {
 	var b = document.getElementById("b").value;
 	var c = document.getElementById("c").value;
 
-	drawParabole(a, b, c);
+	drawParabole(2, 3, 3);
 }
 
 function round(x) {
