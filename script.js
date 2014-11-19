@@ -1,5 +1,5 @@
 /**
- * Created by VesAl HenJo on 14/11/2014.
+ * Created by VesAl & HenJo on 14/11/2014.
  */
 "use strict";
 
@@ -90,7 +90,7 @@ function drawAxis(){
 /**
  * Funktion zum zeichnen einer Parabel
  * @param a	ax^2
- * @param b	ax
+ * @param b	bx
  * @param c	c
  */
 function drawParabole(a, b, c) {
@@ -120,7 +120,6 @@ function drawParabole(a, b, c) {
 		}
 	}
 	context.stroke();
-	return;
 }
 
 function save(polinom) {
